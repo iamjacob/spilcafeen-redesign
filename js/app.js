@@ -56,9 +56,9 @@ function render() {
 
 function renderActiveFilters() {
   const labels = { location: 'Sted', players: 'Spillere', difficulty: 'Sværhedsgrad', time: 'Spilletid' };
-  activeFilters.innerHTML = Object.entries(selectedFilters()).filter(([key, value]) => key !== 'genre' && value !== 'alle').map(([key, value]) => `<span>${labels[key]}: ${value}${key === 'time' ? ' min.' : ''}</span>`).join('');
+  activeFilters.innerHTML = Object.entries(selectedFilters()).filter(([key, value]) => key !== 'genre' && value !== 'alle').map(([key, value]) => `<button class="active-filter" type="button">${labels[key]}: ${value}${key === 'time' ? ' min.' : ''}</button>`).join('');
   const genres = selectedFilters().genre.filter((genre) => genre !== 'alle');
-  if (genres.length) activeFilters.insertAdjacentHTML('beforeend', `<span>Genre: ${genres.join(', ')}</span>`);
+  if (genres.length) activeFilters.insertAdjacentHTML('beforeend', `<button class="active-filter" type="button">Genre: ${genres.join(', ')}</button>`);
 }
 
 function showGame(game) {
@@ -66,9 +66,11 @@ function showGame(game) {
   gameDialog.showModal();
 }
 
-document.querySelector('#filter-button').addEventListener('click', () => filterDialog.showModal());
+const filterButton = document.querySelector('#filter-button');
+filterButton.addEventListener('click', () => filterDialog.showModal());
+activeFilters.addEventListener('click', () => filterDialog.showModal());
 filterDialog.addEventListener('click', (event) => { if (event.target === filterDialog) filterDialog.close(); });
-document.addEventListener('click', (event) => { if (filterDialog.open && !filterForm.contains(event.target) && event.target !== filterDialog) filterDialog.close(); });
+document.addEventListener('click', (event) => { if (filterDialog.open && !filterForm.contains(event.target) && !activeFilters.contains(event.target) && !filterButton.contains(event.target) && event.target !== filterDialog) filterDialog.close(); });
 document.querySelector('#reset-filters').addEventListener('click', () => { filterForm.reset(); render(); });
 filterForm.addEventListener('change', (event) => {
   if (event.target.name === 'genre') {

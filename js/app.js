@@ -67,8 +67,14 @@ function showGame(game) {
 }
 
 const filterButton = document.querySelector('#filter-button');
-filterButton.addEventListener('click', () => filterDialog.showModal());
-activeFilters.addEventListener('click', () => filterDialog.showModal());
+filterButton.addEventListener('click', (event) => {
+  event.stopPropagation();
+  if (!filterDialog.open) filterDialog.showModal();
+});
+activeFilters.addEventListener('click', (event) => {
+  event.stopPropagation();
+  if (!filterDialog.open) filterDialog.showModal();
+});
 filterDialog.addEventListener('click', (event) => { if (event.target === filterDialog) filterDialog.close(); });
 document.addEventListener('click', (event) => { if (filterDialog.open && !filterForm.contains(event.target) && !activeFilters.contains(event.target) && !filterButton.contains(event.target) && event.target !== filterDialog) filterDialog.close(); });
 document.querySelector('#reset-filters').addEventListener('click', () => { filterForm.reset(); render(); });

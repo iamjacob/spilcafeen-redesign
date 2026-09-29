@@ -39,8 +39,10 @@ function filteredGames() {
   });
 }
 
-function gameCard(game) {
-  return `<button class="game-card" type="button" data-game-id="${game.id}"><span class="card-image"><img src="${game.image}" alt="${game.title}"><span class="rating" aria-label="Bedømmelse ${game.rating} ud af 5">★ ${game.rating}</span></span><h3>${game.title}</h3><span class="card-meta"><span>${game.players.min}-${game.players.max} spillere</span><span>${game.playtime} min.</span></span></button>`;
+function gameCard(game, aboveFold = false) {
+  const loading = aboveFold ? 'eager' : 'lazy';
+  const priority = aboveFold ? 'high' : 'low';
+  return `<button class="game-card" type="button" data-game-id="${game.id}"><span class="card-image"><img src="${game.image}" alt="${game.title}" width="300" height="300" loading="${loading}" decoding="async" fetchpriority="${priority}"><span class="rating" aria-label="Bedømmelse ${game.rating} ud af 5">★ ${game.rating}</span></span><h3>${game.title}</h3><span class="card-meta"><span>${game.players.min}-${game.players.max} spillere</span><span>${game.playtime} min.</span></span></button>`;
 }
 
 function render() {
@@ -51,7 +53,7 @@ function render() {
   const popular = visibleGames.slice().sort((a, b) => b.rating - a.rating).slice(0, 4);
   const popularIds = new Set(popular.map((game) => game.id));
   const rest = visibleGames.filter((game) => !popularIds.has(game.id));
-  results.innerHTML = `<section class="game-section" aria-labelledby="popular-title"><h2 id="popular-title">Mest populære</h2><div class="game-grid">${popular.map(gameCard).join('')}</div></section>${rest.length ? `<section class="game-section" aria-labelledby="all-title"><h2 id="all-title">Alle spil</h2><div class="game-grid">${rest.map(gameCard).join('')}</div></section>` : ''}`;
+  results.innerHTML = `<section class="game-section" aria-labelledby="popular-title"><h2 id="popular-title">Mest populære</h2><div class="game-grid">${popular.map((game) => gameCard(game, true)).join('')}</div></section>${rest.length ? `<section class="game-section" aria-labelledby="all-title"><h2 id="all-title">Alle spil</h2><div class="game-grid">${rest.map((game) => gameCard(game)).join('')}</div></section>` : ''}`;
 }
 
 function renderActiveFilters() {

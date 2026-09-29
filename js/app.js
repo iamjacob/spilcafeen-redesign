@@ -67,6 +67,8 @@ function showGame(game) {
 }
 
 document.querySelector('#filter-button').addEventListener('click', () => filterDialog.showModal());
+filterDialog.addEventListener('click', (event) => { if (event.target === filterDialog) filterDialog.close(); });
+document.addEventListener('click', (event) => { if (filterDialog.open && !filterForm.contains(event.target) && event.target !== filterDialog) filterDialog.close(); });
 document.querySelector('#reset-filters').addEventListener('click', () => { filterForm.reset(); render(); });
 filterForm.addEventListener('change', (event) => {
   if (event.target.name === 'genre') {

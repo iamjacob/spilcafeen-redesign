@@ -423,22 +423,5 @@
     "shelf": "Y3",
     "available": false,
     "rules": "Spillere er hemmeligt liberale eller fascister. Liberale skal stoppe fascisterne fra at vedtage love eller eliminere Secret Hitler. Fascisterne arbejder skjult sammen. Præsidenten nominerer en kansler, og alle stemmer. Hvis godkendt, vedtager de love sammen. Liberale skal finde og stoppe Hitler før det er for sent. Brug logik og observation til at identificere fascisterne. Kommunikation og bluff er nøglen til sejr!"
-  },
-  {
-    "id": 26,
-    "title": "Secret Hitler",
-    "description": "Socialt deduktionsspil om politik og forrædderi.",
-    "image": "./assets/img/games/secret-hitler.webp",
-    "genre": "Party",
-    "playtime": 45,
-    "players": { "min": 5, "max": 10 },
-    "language": "English",
-    "rating": 4.4,
-    "age": 17,
-    "difficulty": "Svær",
-    "location": "odense",
-    "shelf": "Y3",
-    "available": false,
-    "rules": "Spillere er hemmeligt liberale eller fascister. Liberale skal stoppe fascisterne fra at vedtage love eller eliminere Secret Hitler. Fascisterne arbejder skjult sammen. Præsidenten nominerer en kansler, og alle stemmer. Hvis godkendt, vedtager de love sammen. Liberale skal finde og stoppe Hitler før det er for sent. Brug logik og observation til at identificere fascisterne. Kommunikation og bluff er nøglen til sejr!"
   }
 ]

@@ -20,13 +20,12 @@
     </div>
   </header>
   <main id="main-content" class="page-content">
-    <div class="content-heading"><p id="result-count" class="result-count" aria-live="polite"></p></div>
     <div id="active-filters" class="active-filters" aria-label="Aktive filtre"></div>
     <div id="results" class="game-sections" aria-live="polite"></div>
   </main>
   <dialog id="filter-dialog" class="filter-dialog" aria-labelledby="filter-title">
     <form method="dialog" class="filter-panel" id="filter-form">
-      <div class="filter-header"><h2 id="filter-title">Filtre</h2><button class="close-button" value="cancel" type="submit" aria-label="Luk filtre">&times;</button></div>
+      <div class="filter-header"><div><h2 id="filter-title">Filtre</h2><p id="result-count" class="result-count" aria-live="polite"></p></div><button class="close-button" value="cancel" type="submit" aria-label="Luk filtre">&times;</button></div>
       <fieldset><legend>Sted</legend><div class="choice-list">
         <label><input type="radio" name="location" value="alle" checked><span>Alle</span></label><label><input type="radio" name="location" value="aalborg"><span>Aalborg</span></label><label><input type="radio" name="location" value="kolding"><span>Kolding</span></label><label><input type="radio" name="location" value="aarhus-vestergade"><span>Aarhus Vestergade</span></label><label><input type="radio" name="location" value="aarhus-fredensgade"><span>Aarhus Fredensgade</span></label>
       </div></fieldset>
